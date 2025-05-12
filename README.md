@@ -1,73 +1,36 @@
-# Welcome to your Lovable project
+# 🐾 Kitty Focus Grow
 
-## Project info
+Bem-vindo ao seu projeto desenvolvido com a plataforma [Lovable](https://lovable.dev)!
 
-**URL**: https://lovable.dev/projects/321fb5a7-40f1-4a18-b201-b038b943bc84
+## 🌐 Projeto Online
 
-## How can I edit this code?
+Acesse o projeto em:  
+🔗 [https://lovable.dev/projects/321fb5a7-40f1-4a18-b201-b038b943bc84](https://lovable.dev/projects/321fb5a7-40f1-4a18-b201-b038b943bc84)
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## ✏️ Como editar este projeto
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/321fb5a7-40f1-4a18-b201-b038b943bc84) and start prompting.
+Você tem várias opções para editar o projeto:
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🔹 Usando o Lovable
 
-**Use your preferred IDE**
+Acesse diretamente o [projeto no Lovable](https://lovable.dev/projects/321fb5a7-40f1-4a18-b201-b038b943bc84) e faça alterações via prompts.  
+Todas as mudanças são automaticamente versionadas e salvas no repositório.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🔹 Usando sua IDE local
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+> **Requisitos:** Node.js e npm instalados. Recomendamos usar o [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) para facilitar.
 
-Follow these steps:
+```bash
+# 1. Clone o repositório
+git clone <SEU_GIT_URL>
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# 2. Acesse o diretório
+cd <NOME_DO_SEU_PROJETO>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# 3. Instale as dependências
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/321fb5a7-40f1-4a18-b201-b038b943bc84) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

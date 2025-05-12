@@ -1,8 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { catStages } from './Cat';
-import { MessageSquare } from 'lucide-react';
 
 interface FloatingCatProps {
   stage: number;
@@ -24,6 +22,8 @@ const FloatingCat: React.FC<FloatingCatProps> = ({ stage, focusMinutes }) => {
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState('');
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 20, y: 20 });
 
   // Mostrar mensagens motivacionais periodicamente
   useEffect(() => {
@@ -39,7 +39,7 @@ const FloatingCat: React.FC<FloatingCatProps> = ({ stage, focusMinutes }) => {
   // Mostrar mensagem quando alcançar marcos de tempo
   useEffect(() => {
     // Mostrar mensagem quando atingir novos 5 minutos
-    if (focusMinutes > 0 && focusMinutes % 5 === 0) {
+    if (focusMinutes > 0 && Math.floor(focusMinutes) % 5 === 0 && Math.floor(focusMinutes) === focusMinutes) {
       showMotivationalMessage();
     }
   }, [focusMinutes]);
@@ -61,11 +61,48 @@ const FloatingCat: React.FC<FloatingCatProps> = ({ stage, focusMinutes }) => {
     }, 1000);
   };
 
+  // Funcionalidade de arrastar
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isDragging) {
+        setPosition({
+          x: e.clientX - 25,
+          y: e.clientY - 25
+        });
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDragging]);
+
   const catEmojis = ["😺", "😸", "😼", "😻", "🐱"];
   const catEmoji = catEmojis[stage];
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div 
+      className="fixed z-[9999]" 
+      style={{ 
+        top: `${position.y}px`, 
+        left: `${position.x}px`,
+        cursor: isDragging ? 'grabbing' : 'grab'
+      }}
+    >
       <div className="relative">
         {/* Balão de mensagem */}
         {showMessage && (
@@ -79,13 +116,16 @@ const FloatingCat: React.FC<FloatingCatProps> = ({ stage, focusMinutes }) => {
         
         {/* Gato flutuante */}
         <div 
+          onMouseDown={handleMouseDown}
           onClick={showMotivationalMessage}
           className={cn(
             "w-14 h-14 bg-secondary rounded-full flex items-center justify-center text-3xl cursor-pointer shadow-lg hover:scale-110 transition-all duration-300",
             isAnimating && "animate-bounce"
           )}
         >
-          {catEmoji}
+          <div className="flex items-center justify-center h-full">
+            {catEmoji}
+          </div>
         </div>
       </div>
     </div>

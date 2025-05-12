@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Cat, { catStages } from '@/components/Cat';
 import Timer from '@/components/Timer';
 import FocusStats from '@/components/FocusStats';
+import FloatingCat from '@/components/FloatingCat';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useToast } from '@/components/ui/use-toast';
@@ -93,6 +94,9 @@ const Index = () => {
           </CardContent>
         </Card>
       </div>
+      
+      {/* Gato Flutuante */}
+      <FloatingCat stage={catStage} focusMinutes={focusMinutes} />
     </div>
   );
 };
